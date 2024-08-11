@@ -11,13 +11,10 @@ class Calculator
       value = numbers_line
     end
     numbers = value.split(delimiter).map(&:to_i)
-
-    number = value.to_i 
-
-    raise "negative numbers not allowed #{number}" if number.to_i < 0
-
-    numbers.sum
-
-    
+    negatives = numbers.select { |n| n < 0 }
+    if negatives.any?
+      raise "negative numbers not allowed #{negatives.join(',')}"
+    end
+    numbers.sum      
   end
 end
