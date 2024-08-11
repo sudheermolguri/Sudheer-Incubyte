@@ -20,16 +20,19 @@ describe "calculator" do
       expect(c.add("1,2,3,5")).to eq(11)
     end
 
-     it "when input string 1\n2,3" do
+    it "when input string 1\n2,3" do
        expect(c.add("1\n2,3")).to eq(6)
      end
 
-     it "when input string //;\n1;2" do
+    it "when input string //;\n1;2" do
        expect(c.add("//;\n1;2")).to eq(3)
      end
 
-     it "when input  string -1" do
+    it "when input  string -1" do
        expect { c.add("-1") }.to raise_error("negative numbers not allowed -1")
      end
+    it "when input string -1,-2,-3" do
+      expect { c.add("-1,-2,-3") }.to raise_error("negative numbers not allowed -1,-2,-3")
+    end
   end
 end
